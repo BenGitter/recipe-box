@@ -1,3 +1,45 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+
+      <!-- Empty list warning -->
+      <div *ngIf="localStorageService.recipes.length === 0" class="panel panel-default" id="emptyList">
+        <h5>Nothing here yet</h5>
+        <ul>
+          <li>Add recipes to fill your RecipeBox</li>
+          <li>Your recipes will be saved in localStorage</li>
+        </ul>
+      </div>
+
+      <div id="accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+        <div *ngFor="let recipe of localStorageService.recipes; let i = index" class="panel panel-default">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" [href]="'#coll'+i" aria-expanded="false" [attr.aria-controls]="'coll'+i">
+            <div class="panel-heading" role="tab" [id]="'panel-'+i">
+              <h4 class="panel-title">
+                {{recipe.title}}
+              </h4>
+            </div>
+          </a>
+          <div [id]="'coll'+i" class="panel-collapse collapse" role="tabpanel" [attr.aria-labelledby]="'panel-'+i">
+            <div class="panel-body">
+              <span class="ingredients-title">Ingredients:</span>
+              <ul>
+                <li *ngFor="let ingredient of recipe.ingredients">{{ingredient}}</li>
+              </ul>
+              <button (click)="editRecipe(recipe)" class="btn btn-sm btn-warning">Edit</button>
+              <button (click)="removeRecipe(recipe)" class="btn btn-sm btn-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+      
+        <button (click)="openModal()" class="btn btn-primary margin-top">Add Recipe</button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modals -->
+<add-recipe *ngIf="localStorageService.showModal"></add-recipe>
+<edit-recipe [recipe]="localStorageService.editRecipeOld" [title]="localStorageService.editTitle" [ingredients]="localStorageService.editIngredients" *ngIf="localStorageService.showEditModal"></edit-recipe>

@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 add-form">
+        <h4>Add Recipe:</h4>
+        <span (click)="closeModal()" class="close-modal">X</span>
+        <form (submit)="onFormSubmit($event)">
+          <input type="text" [(ngModel)]="title" name="title" placeholder="Title">
+          <input type="text" [(ngModel)]="ingredients" name="ingredient" placeholder="Ingredients (comma seperated)">
+
+          <input type="submit" class="btn btn-success" value="Add">
+        </form>
+    
+      </div>
+    </div>
+  </div>
+</div>

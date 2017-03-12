@@ -1,0 +1,38 @@
+.wrapper{
+  height: 100vh;
+  width: 100vw;
+  background: rgba(200,200,230,.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.edit-form{
+  background: white;
+  border: rgba(200,200,230,.8) 20px solid;
+  border-radius: 5px;
+}
+
+.edit-form input{
+  width: calc(100% - 60px);
+  margin: 10px 30px;
+}
+
+.edit-form input[type="submit"]{
+  width: 100px;
+  float: right;
+  margin-bottom: 20px;
+}
+
+.edit-form h4{
+  margin: 20px 10px;
+  float: left;
+}
+
+.close-modal{
+  float: right;
+  margin: 15px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 2px;
+}
