@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class LocalStorageService {
 
-  recipes:any[];
+  recipes:any[] = [];
   localStorageAvailable:boolean = true;
   recipeStorageName:string = "recipe-box.recipes";
 
@@ -43,7 +43,7 @@ export class LocalStorageService {
   }
 
   addRecipe(recipe){
-    this.recipes.push(recipe);    
+    this.recipes.push(recipe);
 
     localStorage.setItem(this.recipeStorageName, JSON.stringify(this.recipes));
   }
